@@ -4,20 +4,18 @@ for (let i = 0; i < 5; i++) {
   alert(i)
 }
 
+ let sum = 0;
+function getSum() {
 
-function getSum(arr) {
-  let sum = 0;
   for(let i = 0; i < 5; i++){
-    if(Array.isArray[i]){
-      return sum + arr[i];
-    } else{
-      return null;
-    }
+      sum += arr[i];
   }
+    return sum;
 }
+getSum();
 
-let Arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-function getMaxOfArray(Arr) {
-  return Math.max.apply(null, Arr);
+function getMaxOfArray(arr2) {
+  return Math.max.apply(null, arr2);
 }
