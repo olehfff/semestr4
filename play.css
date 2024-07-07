@@ -1,0 +1,28 @@
+.oleh{
+    height: 100px;
+    width: 600px;
+    text-align: center;
+    background-color: red;
+  }
+  input{
+    border-radius: 20px 0 0 20px;
+  width: 215px;
+  height: 29px;
+  }
+  button{
+    height: 100px;
+    width: 150px;
+    border-radius: 94px;
+  }
+  img{
+    height: 35px;
+  }
+  .flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .input{
+    display: flex;
+    align-items: center;
+  }
