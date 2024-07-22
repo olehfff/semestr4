@@ -1,0 +1,1 @@
+document.getElementById('firstItem').textContent = 'Новий текст для першого елемента';
