@@ -1,4 +1,4 @@
-//Д/З 1
+Д/З 1
 
 
 const delay = ms => {
@@ -87,7 +87,7 @@ const delay = ms => {
 
 
 
-//    Д/З 2
+    Д/З 2
     function delayedPromise(value, delay) {
   return new Promise((resolve) => {
     setTimeout(() => {
