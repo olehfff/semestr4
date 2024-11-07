@@ -1,4 +1,4 @@
-const express = require ("express"); 
+const express = require("express"); 
 const fs = require('fs'); 
 const bodyParser = require('body-parser'); 
  
@@ -20,7 +20,15 @@ app.get('/students', function (req, res) {
         const jsonParseStudents = JSON.parse(data) 
         res.json(jsonParseStudents) 
         }); 
-}) 
+})
+
+app.post('/students', (req, res) => {
+fs.readFile(filePath, (data, error) => {
+    if(error) {
+        return res.status(500).send('error reading file')
+    }
+})
+})
  
 app.listen(PORT, () => { 
     console.log(`Service is running on port http://localhost:${PORT}`); 
