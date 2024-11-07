@@ -1,6 +1,7 @@
-const express = require("express"); 
+const express = require ("express"); 
 const fs = require('fs'); 
 const bodyParser = require('body-parser'); 
+
  
  
 const app = express() 
@@ -20,16 +21,24 @@ app.get('/students', function (req, res) {
         const jsonParseStudents = JSON.parse(data) 
         res.json(jsonParseStudents) 
         }); 
-})
-
-app.post('/students', (req, res) => {
-fs.readFile(filePath, (data, error) => {
-    if(error) {
-        return res.status(500).send('error reading file')
-    }
-})
-})
+}) 
  
+app.post('/students', (req, res) => { 
+    fs.readFile(filePath, (data, error) => { 
+        if(error) { 
+            return res.status(500).send('error reading file') 
+        }
+        const jsStudents = JSON.parse(data);
+        jsStudents.push(req.body);
+        fs.writeFile(filePath, JSON.stringify(jsStudents, null, 2),(error) => {
+            if(error) { 
+                return res.status(500).send('error writting file') 
+            }
+            res.send("students is added")
+        })
+    }) 
+    }) 
+
 app.listen(PORT, () => { 
-    console.log(`Service is running on port http://localhost:${PORT}`); 
+    console.log(Service is running on port http); //localhost:${PORT}); 
 })

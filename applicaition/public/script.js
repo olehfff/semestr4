@@ -29,5 +29,28 @@ document.addEventListener('DOMContentLoaded', ()=> {
  
  
     } 
-    findStudents() 
+
+    function addStudents(event) {
+        event.preventDefault();
+        const studentsData = {
+            name: studentsForm.name.value,
+            surname: studentsForm.surname.value,
+            age: studentsForm.age.value,
+            course: studentsForm.course.value,
+            faculty: studentsForm.faculty.value,
+            subjects: studentsForm.subjects.value
+        }
+        fetch('/students', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(studentsData)
+        }).then(()=>{
+            findStudents()
+        })
+    }
+
+    studentsForm.addEventListener('submit', addStudents)
+    findStudents()
 })
