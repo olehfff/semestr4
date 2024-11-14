@@ -23,3 +23,7 @@ padding: 8px;
 th {
     background-color: white;
 }
+
+#edit-student{
+    display:none;
+}
