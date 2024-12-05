@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,32 +20,26 @@
         <button type="submit">Додати студента</button>
     </form>
     <table id="students-table">
-        <thead>
-            <tr>
-                <th>Ім'я</th>
-                <th>Прізвище</th>
-                <th>Вік</th>
-                <th>Курс</th>
-                <th>Факультет</th>
-                <th>Курси</th>
+<h1>Student App</h1>
                 <th>Дії</th>
             </tr>
         </thead>
         <tbody>
-            
         </tbody>
     </table>
-    <form id="edit-student">
-        <input type="text" id="edit-name" placeholder="Ім'я" required>
-        <input type="text" id="edit-surname" placeholder="Прізвище" required>
-        <input type="number" id="edit-age" placeholder="Вік" required>
-        <input type="text" id="edit-course" placeholder="Курс" required>
-        <input type="text" id="edit-faculty" placeholder="Факультет" required>
-        <input type="text" id="edit-subjects" placeholder="Курси" required>
-        <button type="submit">Зберегти студента</button>
-    </form>
 
+    <form id="edit-student" style="display: none;">
+        <input type="text" id="edit-name" placeholder="Ім'я" />
+        <input type="text" id="edit-surname" placeholder="Прізвище" />
+        <input type="number" id="edit-age" placeholder="Вік" />
+        <input type="text" id="edit-course" placeholder="Курс" />
+        <input type="text" id="edit-faculty" placeholder="Факультет" />
+        <input type="text" id="edit-subjects" placeholder="Курси" />
+        <button type="button" id="save">Зберегти</button>
+    </form>
+    
     <script src="./script.js"></script>
 </body>
+</html>
 
 </html>
