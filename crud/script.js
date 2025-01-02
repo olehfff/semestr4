@@ -23,7 +23,7 @@
 // const deleteId = 1;
 const api = `https://jsonplaceholder.typicode.com/posts?_limit=3`;
 const postForm = document.getElementById('postForm') 
-const titleInput = document.getElementById('titleInput') 
+const titleInput = document.getElementById('titleInput')
 const bodyInput = document.getElementById('bodyInput') 
 const postList = document.querySelector('#postList') 
 let posts = []; 
@@ -88,4 +88,9 @@ if(event.target.classList.contains('editBtn')) {
 
 function editButton(){ 
     console.log('edit');
+    const findPost = posts.find((post) => post.id===+id);
+    if(findPost) {
+        titleInput.value  = findPost.title;
+        bodyInput.value = findPost.body
+    }
 }
