@@ -1,78 +1,47 @@
- const getUserNames = users => {
-    return users.map(user => user.name);
-  };
-  
-  console.log(getUserNames(users));
+const date = new Date()
+console.log(date);
 
+function getYear() {
+    const year = date.getFullYear();
+    console.log(year)
+}
+getYear()
 
- const getUsersWithEyeColor = (users, color) => {
-    return users.filter(user => user.eyeColor === color);
-  };
-  
-  console.log(getUsersWithEyeColor(users, 'blue'));
+function getMonth() {
+    const month = date.getMonth();
+    console.log(month)
+}
+getMonth()
 
+function getDateOfMonth() {
+    const dateOfMonth = date.getDate();
+    console.log(dateOfMonth)
+}
+getDateOfMonth()
 
- const getUsersWithGender = (users, gender) => {
-    return users.filter(user => user.gender === gender).map(user => user.name);
-  };
-  
-  console.log(getUsersWithGender(users, 'male'));
+function getHours() {
+    const hours = date.getHours();
+    console.log(hours)
+}
+getHours()
 
+function getMinutes() {
+    const minutes = date.getMinutes();
+    console.log(minutes)
+}
+getMinutes()
 
-  const getInactiveUsers = users => {
-    return users.filter(user => !user.isActive);
-  };
-  
-  console.log(getInactiveUsers(users));
+function getSeconds() {
+    const seconds = date.getSeconds();
+    console.log(seconds)
+}
+getSeconds()
 
-
-  const getUserWithEmail = (users, email) => {
-    return users.find(user => user.email === email);
-  };
-  
-  console.log(getUserWithEmail(users, 'shereeanthony@kog.com'));
-  console.log(getUserWithEmail(users, 'elmahead@omatom.com'));
-
-
-  const getUsersWithAge = (users, min, max) => {
-    return users.filter(user => user.age >= min && user.age <= max);
-  };
-  
-  console.log(getUsersWithAge(users, 20, 30));
-  console.log(getUsersWithAge(users, 30, 40));
-
-
-  const calculateTotalBalance = users => {
-    return users.reduce((total, user) => total + user.balance, 0);
-  };
-  
-  console.log(calculateTotalBalance(users));
-
-
-  const getUsersWithFriend = (users, friendName) => {
-    return users
-      .filter(user => user.friends.includes(friendName))
-      .map(user => user.name);
-  };
-  
-  console.log(getUsersWithFriend(users, 'Briana Decker'));
-  console.log(getUsersWithFriend(users, 'Goldie Gentry'));
-
-
-  const getNamesSortedByFriendsCount = users => {
-    return users
-      .slice()
-      .sort((a, b) => a.friends.length - b.friends.length)
-      .map(user => user.name);
-  };
-  
-  console.log(getNamesSortedByFriendsCount(users));
-
-
-  const getSortedUniqueSkills = users => {
-    const skills = users.flatMap(user => user.skills);
-    const uniqueSkills = [...new Set(skills)];
-    return uniqueSkills.sort();
-  };
-  
-  console.log(getSortedUniqueSkills(users));
+function isDateDayOfWeekend() {
+    if(date == 6 || date == 7) {
+        console.log('it is the weekend')
+    } else {
+        console.log('it is weekday');
+    }
+}
+isDateDayOfWeekend()
