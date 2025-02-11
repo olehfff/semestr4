@@ -21,47 +21,76 @@
 
 // fetch(quotes, {
 // const deleteId = 1;
-const api = 'https://jsonplaceholder.typicode.com/posts?_limit=3' 
-const postForm = document.getElementById('postForm')
+const api = `https://jsonplaceholder.typicode.com/posts?_limit=3`;
+const postForm = document.getElementById('postForm') 
 const titleInput = document.getElementById('titleInput')
-const bodyInput = document.getElementById('bodyInput')
-const postList = document.querySelector('#postList')
+const bodyInput = document.getElementById('bodyInput') 
+const postList = document.querySelector('#postList') 
 let posts = []; 
-
+ 
 async function getData() { 
     try { 
         const response = await fetch(api) 
         console.log(response) 
         if (!response.ok) { 
-           throw new Error('Помилка статусу : ', response.status) 
+            throw new Error('Помилка статусу : ', response.status) 
         } 
-posts = response.json() 
-console.log(posts) 
-    } catch(err) { 
+        posts = await response.json() 
+        console.log(posts) 
+        showData() 
+    } catch (err) { 
         console.log(err) 
     } 
 } 
-getData()
-
-function showData() {
-    postList.innerHTML = "";
-    posts.forEach((post)=> {
-const li = document.createElement('li');
-li.dataset.id = post.id;
+getData() 
+ 
+function showData() { 
+    postList.innerHTML = ""; 
+    posts.forEach((post) => { 
+        const li = document.createElement('li'); 
+        li.dataset.id = post.id; 
+        li.innerHTML = ` 
+    <h3>${post.title}</h3> 
+    <p>${post.body}</p> 
+    <button class="editBtn">Edit</button> 
+    <button class="deleteBtn">Delete</button> 
+    `; 
+        postList.appendChild(li) 
     }) 
-}
-
-postForm.addEventListener('submit', async ()=> {
-    const inputTitle = titleInput.value
-    const inputBody = bodyInput.value
-    try {
-        const response = await fetch(api, {
-           method:"POST",
-            headers:{"Content-Type":"application/json"}
-        })
-        let newPost = await response.json()
-        posts = [newPost,...posts]
-} catch(err) { 
-    console.log(err) 
 } 
-})
+ 
+postForm.addEventListener('submit', async (e) => { 
+    e.preventDefault() 
+    const inputValues = { 
+        title: titleInput.value, 
+        body: bodyInput.value 
+    }  
+    try { 
+        const response = await fetch(api, { 
+            method: "POST", 
+            headers: { "Content-Type": "application/json" }, 
+            body: JSON.stringify(inputValues) 
+        }) 
+        let newPost = await response.json() 
+        posts = [newPost, ...posts] 
+        showData() 
+    } catch (err) { 
+        console.log(err) 
+    } 
+     
+}) 
+postList.addEventListener('click', (event) => { 
+const postId = event.target.closest('li')?.dataset.id
+if(event.target.classList.contains('editBtn')) {
+    editButton(postId)
+}
+}) 
+
+function editButton(){ 
+    console.log('edit');
+    const findPost = posts.find((post) => post.id===+id);
+    if(findPost) {
+        titleInput.value  = findPost.title;
+        bodyInput.value = findPost.body
+    }
+}
